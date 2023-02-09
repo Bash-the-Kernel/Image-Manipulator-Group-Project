@@ -11,6 +11,8 @@ import java.io.File;
 public class ImageViewController {
     @FXML
     private ImageView picture;
+    @FXML
+    private ImageView picture1;
 
     @FXML
     protected void onLoadImageButtonClick() {
@@ -19,5 +21,9 @@ public class ImageViewController {
 
         Image image = new Image(selectedFile.toURI().toString());
         picture.setImage(image);
+    }
+    @FXML
+    protected void onDuplicateButtonClick() {
+        picture1.setImage(picture.getImage());
     }
 }
