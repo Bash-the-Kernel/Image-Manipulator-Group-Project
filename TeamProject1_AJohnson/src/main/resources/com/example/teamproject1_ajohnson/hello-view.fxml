@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" prefHeight="580.0" prefWidth="580.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.teamproject1_ajohnson.ImageViewController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <Label text="Original: ">
+      <font>
+         <Font name="Arial" size="20.0" />
+      </font></Label>
+
+    <ImageView id="originalImage" fx:id="originalImage" fitHeight="240.0" fitWidth="249.0" pickOnBounds="true"
+               preserveRatio="true"/>
+    <Button id="loadImage" alignment="BOTTOM_LEFT" onAction="#onLoadImageButtonClick" text="Load Image">
+        <font>
+            <Font size="13.0"/>
+        </font>
+    </Button>
+    <Label layoutX="276.0" layoutY="30.0" text="Transformed:">
+        <font>
+            <Font size="20.0"/>
+        </font>
+    </Label>
+    <ImageView id="transformedImage" fx:id="transformedImage" fitHeight="250.0" fitWidth="250.0" layoutX="175.0"
+               layoutY="130.0" pickOnBounds="true" preserveRatio="true"/>
+    <HBox alignment="CENTER">
+        <Label layoutX="152.0" layoutY="11.0" text="     ">
+            <font>
+                <Font name="Arial" size="20.0"/>
+            </font>
+        </Label>
+        <Button id="grayscale" alignment="BOTTOM_RIGHT" layoutX="260.0" layoutY="327.0"
+                onAction="#onGrayScaleButtonClick" text="B&amp;W"/>
+        <Label text="     ">
+            <font>
+                <Font name="Arial" size="20.0"/>
+            </font>
+        </Label>
+        <Button id="sepia" alignment="BOTTOM_LEFT" layoutX="260.0" layoutY="327.0" onAction="#onSepiaButtonClick"
+                text="Sepia"/>
+        <Label layoutX="194.0" layoutY="11.0" text="     ">
+            <font>
+                <Font name="Arial" size="20.0"/>
+            </font>
+        </Label>
+        <Button id="Inverted" alignment="BOTTOM_CENTER" layoutX="277.0" layoutY="677.0"
+                onAction="#onInvertColorsButtonClick" text="Inverted"/>
+        <Label layoutX="253.0" layoutY="11.0" text="     ">
+            <font>
+                <Font name="Arial" size="20.0"/>
+            </font>
+        </Label>
+        <Button id="teamChoice" alignment="BOTTOM_CENTER" layoutX="277.0" layoutY="677.0"
+                onAction="#onTeamChoiceButtonClick" text="Team Choice"/>
+        <Label layoutX="327.0" layoutY="11.0" text="     ">
+            <font>
+                <Font name="Arial" size="20.0"/>
+            </font>
+        </Label>
+    </HBox>
+</VBox>
