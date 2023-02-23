@@ -46,9 +46,6 @@ public class ImageViewController {
         transformedImage.setImage(grayscaleImage);
     }
 
-    public void onSepiaButtonClick(ActionEvent actionEvent) {
-    }
-
     public void onInvertColorsButtonClick(ActionEvent actionEvent) {
         Image image = originalImage.getImage();
         PixelReader pixelReader = image.getPixelReader();
@@ -72,6 +69,44 @@ public class ImageViewController {
         }
         transformedImage.setImage(teamChoice);
     }
+
+    // ImageViewController.java
+
+    @FXML
+    protected void onSepiaButtonClick() {
+        Image image = originalImage.getImage();
+        PixelReader pixelReader = image.getPixelReader();
+        int width = (int) image.getWidth();
+        int height = (int) image.getHeight();
+
+        WritableImage sepiaImage = new WritableImage(width, height);
+        PixelWriter pixelWriter = sepiaImage.getPixelWriter();
+
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+
+                int color = pixelReader.getArgb(x, y);
+                int alpha = (color >> 24) & 0xff;
+                int red = (color >> 16) & 0xff;
+                int green = (color >> 8) & 0xff;
+                int blue = color & 0xff;
+
+                int newRed = (int) (0.393 * red + 0.769 * green + 0.189 * blue);
+                int newGreen = (int) (0.349 * red + 0.686 * green + 0.168 * blue);
+                int newBlue = (int) (0.272 * red + 0.534 * green + 0.131 * blue);
+
+                newRed = Math.min(newRed, 255);
+                newGreen = Math.min(newGreen, 255);
+                newBlue = Math.min(newBlue, 255);
+
+                int sepia = (alpha << 24) | (newRed << 16) | (newGreen << 8) | newBlue;
+                pixelWriter.setArgb(x, y, sepia);
+            }
+        }
+        transformedImage.setImage(sepiaImage);
+    }
+
+    // image-view.fxml
 
     public void onTeamChoiceButtonClick(ActionEvent actionEvent) {
     }
