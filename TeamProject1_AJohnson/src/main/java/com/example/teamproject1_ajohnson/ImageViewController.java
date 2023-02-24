@@ -108,7 +108,31 @@ public class ImageViewController {
 
     // image-view.fxml
 
-    public void onTeamChoiceButtonClick(ActionEvent actionEvent) {
+
+    public void RedButtonClick(ActionEvent actionEvent) {
+        Image image = originalImage.getImage();
+        PixelReader pixelReader = image.getPixelReader();
+        int width = (int) image.getWidth();
+        int height = (int) image.getHeight();
+
+        WritableImage redscaleImage = new WritableImage(width, height);
+        PixelWriter pixelWriter = redscaleImage.getPixelWriter();
+
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+
+                int color = pixelReader.getArgb(x, y);
+                int red = (color >> 16) & 0xff;
+                int green = (color >> 8) & 0xff;
+                int blue = color & 0xff;
+                int RED = 0;
+                int newGreen = green;
+                int newBlue = blue;
+                int newColor = (RED << 16) | (newGreen << 8) | newBlue;
+                pixelWriter.setArgb(x, y, -newColor);
+            }
+        }
+        transformedImage.setImage(redscaleImage);
     }
 
 
